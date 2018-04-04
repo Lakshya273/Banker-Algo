@@ -1,0 +1,21 @@
+/* Write a Multithread Program that implements the Banker's Algorithm. Create n threads that request and release resources from the bank.
+The Banker will grant the request only if it leaves the system in a safe state. It is important that shared data be in safe from 
+concurrent access. To ensure safe access to shared data, you can use Mutex locks.*/
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int maximum[10][10], need[10][10], allocation[10][10], available[10], completed[10], SafeSequence[10];
+	int i, j, x, y, process, ct=0;
+	
+	printf("Enter the no of processes : ");
+	scanf("%d", &x);
+	for(i = 0; i< x; i++)
+	{
+		completed[i] = 0;
+	}
+	
+	printf("\n\nEnter the no of resources : "); 
+	scanf("%d", &y);
+
