@@ -19,3 +19,25 @@ int main()
 	printf("\n\nEnter the no of resources : "); 
 	scanf("%d", &y);
 
+	printf("\n\nEnter the Maximum Matrix for each process : ");
+	for(i = 0; i < x; i++)
+	{
+		printf("\nFor process %d : ", i + 1);
+		for(j = 0; j < y; j++)
+		scanf("%d", &maximum[i][j]);
+	}
+	
+	printf("\n\nEnter the Allocation for each process : ");
+	for(i = 0; i < x; i++)
+	{
+		printf("\nFor process %d : ",i + 1);
+		for(j = 0; j < y; j++)
+		scanf("%d", &allocation[i][j]); 
+	}
+	
+	printf("\n\nEnter the Available Resources : ");
+	for(i = 0; i < y; i++)
+		scanf("%d", &available[i]);   
+	for(i = 0; i < x; i++)
+		for(j = 0; j < y; j++)
+			need[i][j] = maximum[i][j] - allocation[i][j];
