@@ -41,3 +41,36 @@ int main()
 	for(i = 0; i < x; i++)
 		for(j = 0; j < y; j++)
 			need[i][j] = maximum[i][j] - allocation[i][j];
+	
+	do
+	{
+		printf("\n Maximum Matrix:\tAllocation matrix:\n");     // Printing Maximum Matrix and Allocation Matrix
+		for(i = 0; i < x; i++)
+		{
+			for( j = 0; j < y; j++)
+				printf("%d ", maximum[i][j]);                   // Maximum Matrix
+		
+		printf("\t\t\t\t");
+		for( j = 0; j < y; j++)
+			printf("%d ", allocation[i][j]);                    // Allocation Matrix
+		printf("\n");
+		}
+		
+		process = -1;
+		for(i = 0; i < x; i++)
+		{
+			if(completed[i] == 0)                               //if not completed
+			{
+				process = i ;
+				for(j = 0; j < y; j++)
+				{
+					if(available[j] < need[i][j])               // checking if available resources are less than need.
+					{
+						process = -1;
+						break;
+					}
+				}
+			}
+			if(process != -1)
+			break;
+		}
