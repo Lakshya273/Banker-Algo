@@ -74,3 +74,30 @@ int main()
 			if(process != -1)
 			break;
 		}
+		if(process != -1)
+		{
+			printf("\nProcess %d runs to completion!", process + 1); 
+			SafeSequence[ct] = process + 1;
+			ct++;
+			for(j = 0; j < y; j++)
+			{
+				available[j] += allocation[process][j];
+				allocation[process][j] = 0;
+				maximum[process][j] = 0;
+				completed[process] = 1;
+			}
+		}
+	}while(ct != x && process != -1);
+	
+	if(ct == x)
+	{
+		printf("\nThe system is in a safe state!!\n");
+		printf("Safe Sequence : < ");
+		for( i = 0; i < x; i++)
+			printf("%d ", SafeSequence[i]);
+		printf(">\n");
+	}
+	else 
+		printf("\nThe system is in an unsafe state!!");
+}
+
